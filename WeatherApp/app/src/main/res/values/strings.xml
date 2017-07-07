@@ -9,4 +9,6 @@
     <string name="settings_title">Настройки</string>
     <string name="about_title">О Приложении</string>
     <string name="temperature_navbar">N/A</string>
+
+    <string name="hello_world">Здравствуй, мир!</string>
 </resources>
