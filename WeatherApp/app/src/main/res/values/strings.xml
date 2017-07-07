@@ -5,4 +5,8 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+    <string name="home_title">Главная</string>
+    <string name="settings_title">Настройки</string>
+    <string name="about_title">О Приложении</string>
+    <string name="temperature_navbar">N/A</string>
 </resources>
