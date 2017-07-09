@@ -1,6 +1,7 @@
 package com.mishkun.weatherapp.view;
 
 
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.mishkun.weatherapp.R;
 
@@ -38,5 +40,15 @@ public class AboutFragment extends Fragment {
         if (supportActionBar != null) {
             supportActionBar.setTitle(R.string.about_title);
         }
+
+        final ImageView parrot = (ImageView) view.findViewById(R.id.animated_parrot);
+        parrot.post(new Runnable() {
+            @Override
+            public void run() {
+                AnimationDrawable frameAnimation = (AnimationDrawable) parrot.getBackground();
+                frameAnimation.start();
+            }
+        });
+
     }
 }

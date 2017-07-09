@@ -6,4 +6,7 @@
     <dimen name="nav_header_height">128dp</dimen>
     <dimen name="large_text">32sp</dimen>
     <dimen name="extra_large_text">64sp</dimen>
+    <dimen name="anim_duration">200</dimen>
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_mid">16dp</dimen>
 </resources>
