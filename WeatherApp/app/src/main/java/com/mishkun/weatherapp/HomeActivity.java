@@ -5,6 +5,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.view.Gravity;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -22,6 +23,7 @@ import com.mishkun.weatherapp.view.SettingsFragment;
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private static final String KEY_NAVIGATION_DRAWER_OPENED = "NAVIGATION_DRAWER_OPENED";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +39,16 @@ public class HomeActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction transaction = fm.beginTransaction();
+        if (savedInstanceState == null){
+            transaction.replace(R.id.content, new HomeFragment(),HomeFragment.TAG).addToBackStack(HomeFragment.TAG).commit();
+        }else {
+            if (savedInstanceState.getBoolean(KEY_NAVIGATION_DRAWER_OPENED)){
+                drawer.openDrawer(Gravity.START);
+            }
+        }
     }
 
     @Override
@@ -69,5 +81,13 @@ public class HomeActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        outState.putBoolean(KEY_NAVIGATION_DRAWER_OPENED, drawer.isDrawerOpen(GravityCompat.START));
     }
 }
