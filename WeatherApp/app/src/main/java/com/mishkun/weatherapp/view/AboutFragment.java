@@ -41,14 +41,9 @@ public class AboutFragment extends Fragment {
             supportActionBar.setTitle(R.string.about_title);
         }
 
-        final ImageView parrot = (ImageView) view.findViewById(R.id.animated_parrot);
-        parrot.post(new Runnable() {
-            @Override
-            public void run() {
-                AnimationDrawable frameAnimation = (AnimationDrawable) parrot.getBackground();
-                frameAnimation.start();
-            }
-        });
+        ImageView parrot = (ImageView) view.findViewById(R.id.animated_parrot);
 
+        AnimationDrawable frameAnimation = (AnimationDrawable) parrot.getBackground();
+        frameAnimation.start();
     }
 }
