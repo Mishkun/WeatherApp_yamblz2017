@@ -2,13 +2,4 @@
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
-             tools:context="com.mishkun.weatherapp.view.HomeFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:text="@string/hello_world"/>
-
-</FrameLayout>
+             tools:context="com.mishkun.weatherapp.view.HomeFragment"/>
