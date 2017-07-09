@@ -12,10 +12,11 @@ import com.mishkun.weatherapp.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HomeFragment extends Fragment {
-    public static final String TAG = HomeFragment.class.getSimpleName();
+public class AboutFragment extends Fragment {
 
-    public HomeFragment() {
+    public static final String TAG = AboutFragment.class.getSimpleName();
+
+    public AboutFragment() {
         // Required empty public constructor
     }
 
@@ -24,7 +25,7 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        return inflater.inflate(R.layout.fragment_about, container, false);
     }
 
 }
