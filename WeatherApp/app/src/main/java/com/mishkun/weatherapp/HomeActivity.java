@@ -43,7 +43,7 @@ public class HomeActivity extends AppCompatActivity
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
         if (savedInstanceState == null){
-            transaction.replace(R.id.content, new HomeFragment(),HomeFragment.TAG).addToBackStack(HomeFragment.TAG).commit();
+            transaction.replace(R.id.content, new HomeFragment(),HomeFragment.TAG).commit();
         }else {
             if (savedInstanceState.getBoolean(KEY_NAVIGATION_DRAWER_OPENED)){
                 drawer.openDrawer(Gravity.START);
@@ -77,7 +77,6 @@ public class HomeActivity extends AppCompatActivity
         } else if (id == R.id.nav_about) {
             transaction.replace(R.id.content, new AboutFragment(), AboutFragment.TAG).addToBackStack(AboutFragment.TAG).commit();
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
