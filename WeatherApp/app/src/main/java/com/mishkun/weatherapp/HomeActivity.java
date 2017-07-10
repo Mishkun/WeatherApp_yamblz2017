@@ -1,19 +1,15 @@
 package com.mishkun.weatherapp;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.view.Gravity;
-import android.view.View;
-import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
+import android.view.Gravity;
 import android.view.MenuItem;
 
 import com.mishkun.weatherapp.view.AboutFragment;
@@ -23,7 +19,7 @@ import com.mishkun.weatherapp.view.SettingsFragment;
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private static final String KEY_NAVIGATION_DRAWER_OPENED = "NAVIGATION_DRAWER_OPENED";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,12 +38,8 @@ public class HomeActivity extends AppCompatActivity
 
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
-        if (savedInstanceState == null){
-            transaction.replace(R.id.content, new HomeFragment(),HomeFragment.TAG).commit();
-        }else {
-            if (savedInstanceState.getBoolean(KEY_NAVIGATION_DRAWER_OPENED)){
-                drawer.openDrawer(Gravity.START);
-            }
+        if (savedInstanceState == null) {
+            transaction.replace(R.id.content, new HomeFragment(), HomeFragment.TAG).commit();
         }
     }
 
@@ -69,13 +61,12 @@ public class HomeActivity extends AppCompatActivity
         int id = item.getItemId();
 
         FragmentManager fm = getSupportFragmentManager();
-        FragmentTransaction transaction = fm.beginTransaction();
         if (id == R.id.nav_home) {
-            transaction.replace(R.id.content, new HomeFragment(),HomeFragment.TAG).addToBackStack(HomeFragment.TAG).commit();
+            fm.beginTransaction().replace(R.id.content, new HomeFragment(), HomeFragment.TAG).addToBackStack(HomeFragment.TAG).commit();
         } else if (id == R.id.nav_settings) {
-            transaction.replace(R.id.content, new SettingsFragment(), SettingsFragment.TAG).addToBackStack(SettingsFragment.TAG).commit();
+            fm.beginTransaction().replace(R.id.content, new SettingsFragment(), SettingsFragment.TAG).addToBackStack(SettingsFragment.TAG).commit();
         } else if (id == R.id.nav_about) {
-            transaction.replace(R.id.content, new AboutFragment(), AboutFragment.TAG).addToBackStack(AboutFragment.TAG).commit();
+            fm.beginTransaction().replace(R.id.content, new AboutFragment(), AboutFragment.TAG).addToBackStack(AboutFragment.TAG).commit();
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -86,7 +77,5 @@ public class HomeActivity extends AppCompatActivity
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        outState.putBoolean(KEY_NAVIGATION_DRAWER_OPENED, drawer.isDrawerOpen(GravityCompat.START));
     }
 }
