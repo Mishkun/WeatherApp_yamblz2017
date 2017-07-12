@@ -20,11 +20,11 @@ import com.mishkun.weatherapp.R;
 public class AboutFragment extends Fragment {
 
     public static final String TAG = AboutFragment.class.getSimpleName();
+    private AnimationDrawable frameAnimation;
 
     public AboutFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -42,8 +42,18 @@ public class AboutFragment extends Fragment {
         }
 
         ImageView parrot = (ImageView) view.findViewById(R.id.animated_parrot);
+        frameAnimation = (AnimationDrawable) parrot.getBackground();
+    }
 
-        AnimationDrawable frameAnimation = (AnimationDrawable) parrot.getBackground();
+    @Override
+    public void onResume() {
+        super.onResume();
         frameAnimation.start();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        frameAnimation.stop();
     }
 }
