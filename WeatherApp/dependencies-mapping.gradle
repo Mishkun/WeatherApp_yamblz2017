@@ -1,0 +1,11 @@
+ext{
+    android_support_version = '25.3.1'
+    constraint_version = '1.0.2'
+
+    support_appcompat_v7 = "com.android.support:appcompat-v7:$android_support_version"
+    support_design = "com.android.support:design:$android_support_version"
+    support_preference = "com.android.support:preference-v7:$android_support_version"
+    support_v4 = "com.android.support:support-v4:$android_support_version"
+
+    constraint = "com.android.support.constraint:constraint-layout:$constraint_version"
+}
