@@ -62,11 +62,11 @@ public class HomeActivity extends AppCompatActivity
 
         FragmentManager fm = getSupportFragmentManager();
         if (id == R.id.nav_home) {
-            fm.beginTransaction().replace(R.id.content, new HomeFragment(), HomeFragment.TAG).addToBackStack(HomeFragment.TAG).commit();
+            fm.beginTransaction().replace(R.id.content, new HomeFragment(), HomeFragment.TAG).commit();
         } else if (id == R.id.nav_settings) {
-            fm.beginTransaction().replace(R.id.content, new SettingsFragment(), SettingsFragment.TAG).addToBackStack(SettingsFragment.TAG).commit();
+            fm.beginTransaction().replace(R.id.content, new SettingsFragment(), SettingsFragment.TAG).commit();
         } else if (id == R.id.nav_about) {
-            fm.beginTransaction().replace(R.id.content, new AboutFragment(), AboutFragment.TAG).addToBackStack(AboutFragment.TAG).commit();
+            fm.beginTransaction().replace(R.id.content, new AboutFragment(), AboutFragment.TAG).commit();
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
