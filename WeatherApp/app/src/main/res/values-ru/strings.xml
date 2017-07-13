@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">WeatherApp</string>
+    <string name="navigation_drawer_open">Открыть окно навигации</string>
+    <string name="navigation_drawer_close">Закрыть окно навигации</string>
+    <string name="home_title">Главная</string>
+    <string name="settings_title">Настройки</string>
+    <string name="about_title">О Приложении</string>
+    <string name="hello_world">Здравствуй, мир!</string>
+    <string name="hello_blank_fragment">Приложение Погода\nАвтор: mishkun</string>
+    <string name="cool_preference_summary">Прикольная настройка</string>
+</resources>

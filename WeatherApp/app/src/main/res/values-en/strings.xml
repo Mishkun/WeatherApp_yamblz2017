@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">WeatherApp</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="cool_preference_summary">Cool preference</string>
+    <string name="hello_world">Hello, world!</string>
+    <string name="about_title">About App</string>
+    <string name="settings_title">Settings</string>
+    <string name="home_title">Main</string>
+    <string name="hello_blank_fragment">WeatherApp\nAuthor: mishkun</string>
+</resources>

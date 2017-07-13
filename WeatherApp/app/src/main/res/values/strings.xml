@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">WeatherApp</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="home_title">Main</string>
+    <string name="settings_title">Settings</string>
+    <string name="about_title">About App</string>
+    <string name="temperature_navbar" translatable="false">N/A</string>
+
+    <string name="hello_world">Hello, world!</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">WeatherApp\nAuthor: mishkun</string>
+    <string name="cool_preference_summary">Cool preference</string>
+</resources>
