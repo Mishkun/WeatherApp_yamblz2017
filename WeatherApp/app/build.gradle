@@ -67,8 +67,11 @@ dependencies {
     annotationProcessor butterknife_processor
 
     //Retrofit
-    compile retrofit
-
+    compile(
+            retrofit,
+            gson_converter,
+            retrofit_rxadapter
+    )
 
     testCompile 'junit:junit:4.12'
 }

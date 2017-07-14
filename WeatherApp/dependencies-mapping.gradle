@@ -24,4 +24,6 @@ ext{
     dagger_processor = "com.google.dagger:dagger-compiler:$dagger_version"
 
     retrofit = "com.squareup.retrofit2:retrofit:$retrofit_version"
+    gson_converter = "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    retrofit_rxadapter = "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
 }
