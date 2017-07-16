@@ -6,10 +6,13 @@ def dagger_version = '2.11'
 def butterknife_version = '8.7.0'
 def retrofit_version = '2.3.0'
 def rxrelay_version = '2.0.0'
-
+def lifecycle_version = '1.0.0-alpha3'
+def rxbinding_version = '2.0.0'
 ext{
     rxjava = "io.reactivex.rxjava2:rxjava:$rxjava_version"
     rxandroid = "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
+    rxbinding = "com.jakewharton.rxbinding2:rxbinding:$rxbinding_version"
+    rxbinding_support_v4 = "com.jakewharton.rxbinding2:rxbinding-support-v4:$rxbinding_version"
     rxrelay = "com.jakewharton.rxrelay2:rxrelay:$rxrelay_version"
 
     support_appcompat_v7 = "com.android.support:appcompat-v7:$android_support_version"
@@ -20,7 +23,7 @@ ext{
     constraint = "com.android.support.constraint:constraint-layout:$constraint_version"
 
     butterknife = "com.jakewharton:butterknife:$butterknife_version"
-    butterknife_processor = "com.jakewharton:butterknife-compiler$butterknife_version"
+    butterknife_processor = "com.jakewharton:butterknife-compiler:$butterknife_version"
 
     dagger = "com.google.dagger:dagger:$dagger_version"
     dagger_processor = "com.google.dagger:dagger-compiler:$dagger_version"
@@ -29,4 +32,7 @@ ext{
     gson_converter = "com.squareup.retrofit2:converter-gson:$retrofit_version"
     retrofit_rxadapter = "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
 
+    lifecycle_runtime = "android.arch.lifecycle:runtime:$lifecycle_version"
+    lifecycle_ext = "android.arch.lifecycle:extensions:$lifecycle_version"
+    lifecycle_processor = "android.arch.lifecycle:compiler:$lifecycle_version"
 }

@@ -22,12 +22,11 @@ public abstract class ParameterlessInteractor<R> extends Subscriptable {
     }
 
 
-    protected abstract Observable<R> buildUseCaseObservable();
+    public abstract Observable<R> buildUseCaseObservable();
 
-    public void execute(DisposableObserver<R> observer) {
-        final Observable<R> observable = this.buildUseCaseObservable()
-                                             .subscribeOn(jobScheduler)
-                                             .observeOn(uiScheduler);
-        addSubscription(observable.subscribeWith(observer));
+    public Observable<R> get() {
+        return this.buildUseCaseObservable()
+                   .subscribeOn(jobScheduler)
+                   .observeOn(uiScheduler);
     }
 }

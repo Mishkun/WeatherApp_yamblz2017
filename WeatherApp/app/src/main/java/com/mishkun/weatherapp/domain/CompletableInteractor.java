@@ -24,11 +24,10 @@ public abstract class CompletableInteractor<P> extends Subscriptable {
 
     public abstract Completable buildUseCaseObservable(P params);
 
-    public void execute(DisposableCompletableObserver observer, P params) {
-        final Completable observable = this.buildUseCaseObservable(params)
+    public Completable get(P params) {
+       return this.buildUseCaseObservable(params)
                                            .subscribeOn(jobScheduler)
                                            .observeOn(uiScheduler);
-        addSubscription(observable.subscribeWith(observer));
     }
 
 }

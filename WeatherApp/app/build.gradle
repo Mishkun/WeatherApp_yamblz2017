@@ -56,11 +56,20 @@ dependencies {
     )
     implementation support_v4
 
+    // Lifecycle
+    compile (
+            lifecycle_runtime,
+            lifecycle_ext
+    )
+    annotationProcessor lifecycle_processor
+
     // Rx
     compile(
             rxandroid,
             rxrelay,
-            rxjava
+            rxjava,
+            rxbinding,
+            rxbinding_support_v4
     )
 
     // Dagger
