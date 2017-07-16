@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <SwitchPreferenceCompat
-        android:defaultValue="false"
-        android:key="cool_preference"
-        android:title="@string/cool_preference_summary"/>
+    <ListPreference
+        android:defaultValue="@string/default_time_prefernce_value"
+        android:key="@string/time_preference_key"
+        android:title="@string/time_schedule_preference_summary"
+        android:entries="@array/time_schedule_preference_entries"
+        android:entryValues="@array/time_schedule_preference_entry_values"/>
 </PreferenceScreen>

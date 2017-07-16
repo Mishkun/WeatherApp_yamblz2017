@@ -2,6 +2,7 @@ package com.mishkun.weatherapp.di;
 
 import android.content.Context;
 
+import com.mishkun.weatherapp.HomeActivity;
 import com.mishkun.weatherapp.view.HomeFragment;
 
 import javax.inject.Singleton;
@@ -17,4 +18,6 @@ public interface AppComponent {
     void inject(WeatherApplication application);
 
     void inject(HomeFragment homeFragment);
+
+    void inject(HomeActivity homeActivity);
 }

@@ -87,5 +87,8 @@ dependencies {
             retrofit_rxadapter
     )
 
+    // Android job
+    compile android_job
+
     testCompile 'junit:junit:4.12'
 }

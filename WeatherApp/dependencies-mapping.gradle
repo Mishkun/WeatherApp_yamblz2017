@@ -8,6 +8,7 @@ def retrofit_version = '2.3.0'
 def rxrelay_version = '2.0.0'
 def lifecycle_version = '1.0.0-alpha3'
 def rxbinding_version = '2.0.0'
+def android_job_version = '1.1.11'
 ext{
     rxjava = "io.reactivex.rxjava2:rxjava:$rxjava_version"
     rxandroid = "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
@@ -35,4 +36,6 @@ ext{
     lifecycle_runtime = "android.arch.lifecycle:runtime:$lifecycle_version"
     lifecycle_ext = "android.arch.lifecycle:extensions:$lifecycle_version"
     lifecycle_processor = "android.arch.lifecycle:compiler:$lifecycle_version"
+
+    android_job = "com.evernote:android-job:$android_job_version"
 }

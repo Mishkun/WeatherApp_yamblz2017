@@ -9,16 +9,43 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.preference.PreferenceManager;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+import com.evernote.android.job.JobManager;
+import com.mishkun.weatherapp.di.WeatherApplication;
+import com.mishkun.weatherapp.domain.providers.CurrentWeatherProvider;
+import com.mishkun.weatherapp.jobs.WeatherJob;
+import com.mishkun.weatherapp.jobs.WeatherJobCreator;
 import com.mishkun.weatherapp.view.AboutFragment;
 import com.mishkun.weatherapp.view.HomeFragment;
 import com.mishkun.weatherapp.view.SettingsFragment;
 
+import javax.inject.Inject;
+
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private static final String KEY_JOB_ID = "JOB_ID";
+    public int jobId;
+
+    @Inject
+    public CurrentWeatherProvider currentWeatherProvider;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+
+        JobManager.create(this.getApplicationContext());
+        JobManager.instance().addJobCreator(new WeatherJobCreator(currentWeatherProvider));
+
+        if (JobManager.instance().getAllJobsForTag(WeatherJob.TAG).size() == 0) {
+            jobId = WeatherJob.scheduleJob(
+                    Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.time_preference_key), "15")));
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +67,10 @@ public class HomeActivity extends AppCompatActivity
         FragmentTransaction transaction = fm.beginTransaction();
         if (savedInstanceState == null) {
             transaction.replace(R.id.content, new HomeFragment(), HomeFragment.TAG).commit();
+        } else {
+            savedInstanceState.getInt(KEY_JOB_ID);
         }
+        ((WeatherApplication) getApplication()).getAppComponent().inject(this);
     }
 
     @Override
@@ -76,5 +106,6 @@ public class HomeActivity extends AppCompatActivity
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
+        outState.putInt(KEY_JOB_ID, jobId);
     }
 }
