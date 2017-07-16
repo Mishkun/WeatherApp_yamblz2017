@@ -12,4 +12,5 @@ public interface WeatherView {
     Observable<Object> getRefreshCalls();
     Consumer<Weather> getWeatherConsumer();
     Consumer<String> getErrorConsumer();
+    Consumer<Boolean> getLoadingStatusConsumer();
 }

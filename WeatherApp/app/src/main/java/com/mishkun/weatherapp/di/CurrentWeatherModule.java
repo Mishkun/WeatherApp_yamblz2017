@@ -33,7 +33,7 @@ public class CurrentWeatherModule {
 
     @Provides
     @Singleton
-    public CurrentWeatherProvider provideCurrentWeather(OpenWeatherMapApi openWeatherMapApi) {
-        return new OpenWeatherMapCurrentWeatherRepository(openWeatherMapApi, WeatherApplication.context);
+    public CurrentWeatherProvider provideCurrentWeather(OpenWeatherMapApi openWeatherMapApi, Context context) {
+        return new OpenWeatherMapCurrentWeatherRepository(openWeatherMapApi, context);
     }
 }

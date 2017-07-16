@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="temperature_fmt_string" type="id">%.0f°</item>
+</resources>

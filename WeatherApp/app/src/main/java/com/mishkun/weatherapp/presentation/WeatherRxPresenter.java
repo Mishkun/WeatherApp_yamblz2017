@@ -52,6 +52,7 @@ public class WeatherRxPresenter extends RxPresenter<WeatherView> {
                                                              .doOnError((ignore) -> errorMessages.accept("error"));
         addSubscription(weatherRefhreshSubscription.subscribe());
         addSubscription(weatherStatus.subscribe(view.getWeatherConsumer()));
+        addSubscription(loadingStatus.subscribe(view.getLoadingStatusConsumer()));
     }
 
     @Override

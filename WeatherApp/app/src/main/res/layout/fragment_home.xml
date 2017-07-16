@@ -1,26 +1,24 @@
-<android.support.constraint.ConstraintLayout
+<android.support.v4.widget.SwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/swiperefresh"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary">
 
-    <Button
-        android:id="@+id/refresh_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="8dp"
-        android:text="refresh"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"/>
-    <TextView
+        <TextView
         android:id="@+id/city_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:textColor="@android:color/white"
         android:textSize="@dimen/large_text"
         app:layout_constraintBottom_toTopOf="@id/degrees_text_view"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,6 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
+        android:textColor="@android:color/white"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:textSize="@dimen/extra_large_text"
@@ -47,6 +46,7 @@
         android:id="@+id/humidity_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
         android:layout_margin="8dp"
         app:layout_constraintBottom_toTopOf="@+id/wind_text_view"
         app:layout_constraintStart_toStartOf="parent"
@@ -59,6 +59,7 @@
         android:id="@+id/wind_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
         android:layout_margin="8dp"
         app:layout_constraintBottom_toTopOf="@+id/pressure_text_view"
         app:layout_constraintStart_toStartOf="parent"
@@ -69,6 +70,7 @@
         android:id="@+id/pressure_text_view"
         android:layout_width="wrap_content"
         android:layout_height="19dp"
+        android:textColor="@android:color/white"
         android:layout_margin="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -77,3 +79,4 @@
         android:layout_marginBottom="32dp"
         />
 </android.support.constraint.ConstraintLayout>
+</android.support.v4.widget.SwipeRefreshLayout>

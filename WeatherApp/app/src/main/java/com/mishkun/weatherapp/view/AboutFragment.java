@@ -5,6 +5,7 @@ import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -39,6 +40,7 @@ public class AboutFragment extends Fragment {
         ActionBar supportActionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
         if (supportActionBar != null) {
             supportActionBar.setTitle(R.string.about_title);
+            supportActionBar.setDisplayHomeAsUpEnabled(true);
         }
 
         ImageView parrot = (ImageView) view.findViewById(R.id.animated_parrot);

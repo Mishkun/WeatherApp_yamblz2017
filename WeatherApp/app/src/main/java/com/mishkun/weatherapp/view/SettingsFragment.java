@@ -52,6 +52,7 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Shared
         ActionBar supportActionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
         if (supportActionBar != null) {
             supportActionBar.setTitle(R.string.settings_title);
+            supportActionBar.setDisplayHomeAsUpEnabled(true);
         }
     }
 

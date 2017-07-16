@@ -16,6 +16,7 @@ class AppModule {
     private Context context;
 
     public AppModule(Context context) {
+        this.context = context;
     }
 
     @Provides

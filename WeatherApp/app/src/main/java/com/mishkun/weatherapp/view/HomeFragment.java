@@ -4,17 +4,16 @@ package com.mishkun.weatherapp.view;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.jakewharton.rxbinding2.view.RxView;
+import com.jakewharton.rxbinding2.support.v4.widget.RxSwipeRefreshLayout;
 import com.mishkun.weatherapp.R;
 import com.mishkun.weatherapp.di.WeatherApplication;
 import com.mishkun.weatherapp.domain.entities.Weather;
@@ -43,10 +42,10 @@ public class HomeFragment extends Fragment implements WeatherView {
     public TextView windView;
     @BindView(R.id.pressure_text_view)
     public TextView pressureView;
-    @BindView(R.id.refresh_button)
-    public Button button;
     @Inject
     public WeatherRxPresenter weatherRxPresenter;
+    @BindView(R.id.swiperefresh)
+    SwipeRefreshLayout swipeRefreshLayout;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -90,17 +89,17 @@ public class HomeFragment extends Fragment implements WeatherView {
 
     @Override
     public Observable<Object> getRefreshCalls() {
-        return RxView.clicks(button);
+        return RxSwipeRefreshLayout.refreshes(swipeRefreshLayout);
     }
+
 
     @Override
     public Consumer<Weather> getWeatherConsumer() {
         return weather -> {
-            Log.d(TAG, "getWeattherConsumer()");
-            humidityView.setText(String.format("humidity %.0f", weather.getHumidity()));
-            degreesView.setText(String.format("%.0f", weather.getTemperature().getCelsiusDegrees()));
-            pressureView.setText(String.format("pressure %.1f mmHg", weather.getPressureMmHg()));
-            windView.setText(String.format("wind: %.1f m/s", weather.getWindSpeed()));
+            humidityView.setText(String.format(getString(R.string.humidity_fmt_string), weather.getHumidity()));
+            degreesView.setText(String.format(getString(R.string.temperature_fmt_string), weather.getTemperature().getCelsiusDegrees()));
+            pressureView.setText(String.format(getString(R.string.pressure_fmt_string), weather.getPressureMmHg()));
+            windView.setText(String.format(getString(R.string.wind_fmt_string), weather.getWindSpeed()));
         };
     }
 
@@ -108,5 +107,11 @@ public class HomeFragment extends Fragment implements WeatherView {
     public Consumer<String> getErrorConsumer() {
         return s -> Toast.makeText(getActivity(), s,
                                    Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public Consumer<Boolean> getLoadingStatusConsumer() {
+        return (Consumer<Boolean>) RxSwipeRefreshLayout.refreshing(swipeRefreshLayout);
     }
 }

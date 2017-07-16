@@ -32,6 +32,7 @@ public class HomeActivity extends AppCompatActivity
 
     @Inject
     public CurrentWeatherProvider currentWeatherProvider;
+    private Toolbar toolbar;
 
     @Override
     protected void onResume() {
@@ -51,7 +52,7 @@ public class HomeActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -83,6 +84,11 @@ public class HomeActivity extends AppCompatActivity
         }
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        toolbar.getBackground().setAlpha(0);
+    }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
