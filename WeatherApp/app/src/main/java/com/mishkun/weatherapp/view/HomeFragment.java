@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,10 +43,12 @@ public class HomeFragment extends Fragment implements WeatherView {
     public TextView windView;
     @BindView(R.id.pressure_text_view)
     public TextView pressureView;
+    @BindView(R.id.swiperefresh)
+    public SwipeRefreshLayout swipeRefreshLayout;
+    @BindView(R.id.icon_view)
+    public ImageView imageView;
     @Inject
     public WeatherRxPresenter weatherRxPresenter;
-    @BindView(R.id.swiperefresh)
-    SwipeRefreshLayout swipeRefreshLayout;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -100,6 +103,32 @@ public class HomeFragment extends Fragment implements WeatherView {
             degreesView.setText(String.format(getString(R.string.temperature_fmt_string), weather.getTemperature().getCelsiusDegrees()));
             pressureView.setText(String.format(getString(R.string.pressure_fmt_string), weather.getPressureMmHg()));
             windView.setText(String.format(getString(R.string.wind_fmt_string), weather.getWindSpeed()));
+            switch (weather.getWeatherConditions()) {
+                case RAIN:
+                    imageView.setBackgroundResource(R.drawable.rain);
+                    break;
+                case CLOUDY:
+                    imageView.setBackgroundResource(R.drawable.cloudy);
+                    break;
+                case PARTLY_CLOUDY:
+                    imageView.setBackgroundResource(R.drawable.partly_cloudy);
+                    break;
+                case THUNDERSTORM:
+                    imageView.setBackgroundResource(R.drawable.thunderstorm);
+                    break;
+                case FOG:
+                    imageView.setBackgroundResource(R.drawable.fog);
+                    break;
+                case CLEAR:
+                    imageView.setBackgroundResource(R.drawable.sun);
+                    break;
+                case DRIZZLE:
+                    imageView.setBackgroundResource(R.drawable.drizzle);
+                    break;
+                case SNOW:
+                    imageView.setBackgroundResource(R.drawable.snowflake);
+                    break;
+            }
         };
     }
 

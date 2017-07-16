@@ -6,17 +6,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.mishkun.weatherapp.HomeActivity">
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:elevation="0dp"
         android:theme="@style/AppTheme.AppBarOverlay">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
+            android:background="@android:color/transparent"
             app:popupTheme="@style/AppTheme.PopupOverlay"/>
 
     </android.support.design.widget.AppBarLayout>
@@ -26,4 +30,5 @@
         android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+    </LinearLayout>
 </android.support.design.widget.CoordinatorLayout>
