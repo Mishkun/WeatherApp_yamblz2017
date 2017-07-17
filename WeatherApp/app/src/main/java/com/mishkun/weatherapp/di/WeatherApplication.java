@@ -6,22 +6,20 @@ import android.app.Application;
  * Created by Mishkun on 16.07.2017.
  */
 
-public class WeatherApplication extends Application {
+public class WeatherApplication extends Application implements HasComponent<AppComponent> {
 
     private AppComponent appComponent;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        this.appComponent =
-                DaggerAppComponent.builder().appModule(new AppModule(this)).build();
-        appComponent.inject(this);
-
+        this.appComponent = DaggerAppComponent.builder()
+                                              .appModule(new AppModule(this))
+                                              .build();
     }
 
-    public AppComponent getAppComponent() {
+    @Override
+    public AppComponent getComponent() {
         return appComponent;
     }
-
-
 }

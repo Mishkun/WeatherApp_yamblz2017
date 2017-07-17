@@ -14,7 +14,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.evernote.android.job.JobManager;
-import com.mishkun.weatherapp.di.WeatherApplication;
+import com.mishkun.weatherapp.di.AppComponent;
+
+import com.mishkun.weatherapp.di.HasComponent;
+import com.mishkun.weatherapp.di.WeatherScreenComponent;
 import com.mishkun.weatherapp.domain.providers.CurrentWeatherProvider;
 import com.mishkun.weatherapp.jobs.WeatherJob;
 import com.mishkun.weatherapp.jobs.WeatherJobCreator;
@@ -25,13 +28,14 @@ import com.mishkun.weatherapp.view.SettingsFragment;
 import javax.inject.Inject;
 
 public class HomeActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, HasComponent<WeatherScreenComponent> {
 
     private static final String KEY_JOB_ID = "JOB_ID";
     public int jobId;
 
     @Inject
     public CurrentWeatherProvider currentWeatherProvider;
+    private WeatherScreenComponent weatherScreenComponent;
 
     @Override
     protected void onResume() {
@@ -70,7 +74,8 @@ public class HomeActivity extends AppCompatActivity
         } else {
             savedInstanceState.getInt(KEY_JOB_ID);
         }
-        ((WeatherApplication) getApplication()).getAppComponent().inject(this);
+        weatherScreenComponent = ((HasComponent<AppComponent>) getApplication()).getComponent().weatherScreenComponent();
+        weatherScreenComponent.inject(this);
     }
 
     @Override
@@ -111,5 +116,16 @@ public class HomeActivity extends AppCompatActivity
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putInt(KEY_JOB_ID, jobId);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        weatherScreenComponent = null;
+    }
+
+    @Override
+    public WeatherScreenComponent getComponent() {
+        return weatherScreenComponent;
     }
 }

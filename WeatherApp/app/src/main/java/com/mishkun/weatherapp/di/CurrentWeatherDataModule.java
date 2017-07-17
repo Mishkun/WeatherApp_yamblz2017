@@ -18,8 +18,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by Mishkun on 16.07.2017.
  */
 @Module
-public class CurrentWeatherModule {
-
+public class CurrentWeatherDataModule {
 
     @Provides
     @Singleton

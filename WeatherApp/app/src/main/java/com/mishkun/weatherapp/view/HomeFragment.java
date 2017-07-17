@@ -16,7 +16,9 @@ import android.widget.Toast;
 
 import com.jakewharton.rxbinding2.support.v4.widget.RxSwipeRefreshLayout;
 import com.mishkun.weatherapp.R;
+import com.mishkun.weatherapp.di.HasComponent;
 import com.mishkun.weatherapp.di.WeatherApplication;
+import com.mishkun.weatherapp.di.WeatherScreenComponent;
 import com.mishkun.weatherapp.domain.entities.Weather;
 import com.mishkun.weatherapp.presentation.WeatherRxPresenter;
 import com.mishkun.weatherapp.presentation.WeatherView;
@@ -55,9 +57,10 @@ public class HomeFragment extends Fragment implements WeatherView {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ((WeatherApplication) getActivity().getApplication()).getAppComponent().inject(this);
+        ((HasComponent<WeatherScreenComponent>) getActivity()).getComponent().inject(this);
     }
 
     @Override

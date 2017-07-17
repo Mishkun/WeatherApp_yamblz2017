@@ -14,7 +14,7 @@ import io.reactivex.schedulers.Schedulers;
  */
 
 @Module
-public class UtilsModule {
+public class DomainModule {
     public static final String JOB = "JOB";
     public static final String UI = "UI";
 

@@ -1,19 +1,20 @@
 package com.mishkun.weatherapp.domain.interactors;
 
-import com.mishkun.weatherapp.di.UtilsModule;
+import com.mishkun.weatherapp.di.WeatherScreen;
 import com.mishkun.weatherapp.domain.CompletableInteractor;
 import com.mishkun.weatherapp.domain.entities.Location;
 import com.mishkun.weatherapp.domain.providers.CurrentWeatherProvider;
 
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.inject.Singleton;
 
 import io.reactivex.Completable;
 import io.reactivex.Scheduler;
 import io.reactivex.annotations.NonNull;
 
-import static com.mishkun.weatherapp.di.UtilsModule.JOB;
-import static com.mishkun.weatherapp.di.UtilsModule.UI;
+import static com.mishkun.weatherapp.di.DomainModule.JOB;
+import static com.mishkun.weatherapp.di.DomainModule.UI;
 
 /**
  * Created by Mishkun on 14.07.2017.

@@ -2,9 +2,10 @@ package com.mishkun.weatherapp.domain;
 
 import android.support.annotation.NonNull;
 
+import com.mishkun.weatherapp.common.Subscriptable;
+
 import io.reactivex.Observable;
 import io.reactivex.Scheduler;
-import io.reactivex.observers.DisposableObserver;
 
 /**
  * Created by Mishkun on 08.07.2017.
