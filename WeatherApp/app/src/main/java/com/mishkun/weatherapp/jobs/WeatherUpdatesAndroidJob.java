@@ -19,26 +19,17 @@ import io.reactivex.Completable;
 
 public class WeatherUpdatesAndroidJob implements WeatherUpdatesScheduler {
 
-    private final UpdateWeather updateWeather;
     private static final String TAG = WeatherUpdatesAndroidJob.class.getSimpleName();
 
     public WeatherUpdatesAndroidJob(UpdateWeather updateWeather, Context context) {
-        this.updateWeather = updateWeather;
         JobManager.create(context);
         JobManager.instance().addJobCreator(new WeatherJobCreator(updateWeather));
     }
 
     @Override
     public Completable scheduleWeatherUpdates(long millis) {
-        Set<Job> weatherJobs = JobManager.instance().getAllJobsForTag(WeatherJob.TAG);
-        if (weatherJobs.size() != 0) {
-            for (Job weatherJob : weatherJobs) {
-                weatherJob.cancel();
-            }
-        }
+        JobManager.instance().cancelAll();
         WeatherJob.scheduleJob(millis);
-        Log.d(TAG, "scheduleWeatherUpdates (millis): " + millis);
-        Log.d(TAG, "scheduleWeatherUpdates (minutes): " + TimeUnit.MILLISECONDS.toMinutes(millis));
         return Completable.complete();
     }
 }
