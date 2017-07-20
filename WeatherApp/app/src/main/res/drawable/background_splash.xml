@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:drawable="@color/colorPrimary"/>
+
+    <item
+        android:bottom="128dp"
+        android:right="128dp"
+        android:top="128dp"
+        android:left="128dp"
+        android:gravity="center"
+        android:drawable="@drawable/splash"/>
+    <item>
+    </item>
+
+</layer-list>
