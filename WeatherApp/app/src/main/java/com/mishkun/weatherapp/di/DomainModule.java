@@ -9,26 +9,27 @@ import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
+import static com.mishkun.weatherapp.di.NamedConsts.JOB;
+import static com.mishkun.weatherapp.di.NamedConsts.UI;
+
 /**
  * Created by Mishkun on 16.07.2017.
  */
 
 @Module
-public class DomainModule {
-    public static final String JOB = "JOB";
-    public static final String UI = "UI";
+class DomainModule {
 
     @Provides
     @Singleton
     @Named(JOB)
-    public Scheduler provideJobScheduler() {
+    Scheduler provideJobScheduler() {
         return Schedulers.computation();
     }
 
     @Provides
     @Singleton
     @Named(UI)
-    public Scheduler provideUIScheduler() {
+    Scheduler provideUIScheduler() {
         return AndroidSchedulers.mainThread();
     }
 }

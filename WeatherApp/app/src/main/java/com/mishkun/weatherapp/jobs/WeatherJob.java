@@ -5,28 +5,28 @@ import android.support.annotation.NonNull;
 import com.evernote.android.job.Job;
 import com.evernote.android.job.JobRequest;
 import com.mishkun.weatherapp.domain.entities.Location;
-import com.mishkun.weatherapp.domain.providers.CurrentWeatherProvider;
-
-import java.util.concurrent.TimeUnit;
+import com.mishkun.weatherapp.domain.interactors.UpdateWeather;
 
 /**
  * Created by Mishkun on 16.07.2017.
  */
 
 public class WeatherJob extends Job {
-    public static final String TAG = "WeatherJob";
+    static final String TAG = "WeatherJob";
 
-    private CurrentWeatherProvider currentWeatherProvider;
     private Location currentLocation = new Location(55.75222, 37.61556);
+    private final UpdateWeather updateWeather;
 
-    public WeatherJob(CurrentWeatherProvider currentWeatherProvider) {
-        this.currentWeatherProvider = currentWeatherProvider;
+
+    public WeatherJob(UpdateWeather updateWeather) {
+
+        this.updateWeather = updateWeather;
     }
 
-    public static int scheduleJob(int minutes) {
+    public static int scheduleJob(long millis) {
         return new JobRequest.Builder(TAG)
                 .setPersisted(true)
-                .setPeriodic(TimeUnit.MINUTES.toMillis(minutes))
+                .setPeriodic(millis)
                 .setRequiredNetworkType(JobRequest.NetworkType.CONNECTED)
                 .build()
                 .schedule();
@@ -35,7 +35,7 @@ public class WeatherJob extends Job {
     @NonNull
     @Override
     protected Result onRunJob(Params params) {
-        currentWeatherProvider.refreshData(currentLocation).subscribe();
+        updateWeather.run(currentLocation).subscribe();
         return Result.SUCCESS;
     }
 }

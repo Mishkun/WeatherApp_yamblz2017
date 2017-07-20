@@ -1,7 +1,8 @@
 package com.mishkun.weatherapp.di;
 
 import com.mishkun.weatherapp.HomeActivity;
-import com.mishkun.weatherapp.view.HomeFragment;
+import com.mishkun.weatherapp.presentation.home.HomeFragment;
+import com.mishkun.weatherapp.presentation.settings.SettingsFragment;
 
 import dagger.Subcomponent;
 

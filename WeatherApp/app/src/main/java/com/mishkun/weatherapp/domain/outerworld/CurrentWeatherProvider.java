@@ -1,4 +1,4 @@
-package com.mishkun.weatherapp.domain.providers;
+package com.mishkun.weatherapp.domain.outerworld;
 
 import android.support.annotation.NonNull;
 

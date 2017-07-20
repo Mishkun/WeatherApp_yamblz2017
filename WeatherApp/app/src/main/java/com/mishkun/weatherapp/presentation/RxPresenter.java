@@ -18,7 +18,7 @@ public abstract class RxPresenter<V> extends Subscriptable {
         onAttach();
     }
 
-    abstract void onAttach();
+    protected abstract void onAttach();
 
     public void detachView() {
         this.view = null;
@@ -26,5 +26,5 @@ public abstract class RxPresenter<V> extends Subscriptable {
         dispose();
     }
 
-    abstract void onDetach();
+    protected abstract void onDetach();
 }

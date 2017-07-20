@@ -4,28 +4,29 @@ import android.support.annotation.NonNull;
 
 import com.mishkun.weatherapp.common.Subscriptable;
 
-import io.reactivex.Observable;
+import dagger.Subcomponent;
 import io.reactivex.Scheduler;
+import io.reactivex.Single;
 
 /**
- * Created by Mishkun on 08.07.2017.
+ * Created by Mishkun on 19.07.2017.
  */
 
-public abstract class ParameterlessInteractor<R> extends Subscriptable {
+public abstract class SingleInteractor<R> extends Subscriptable{
     private final Scheduler jobScheduler;
     private final Scheduler uiScheduler;
 
 
-    protected ParameterlessInteractor(@NonNull Scheduler threadExecutor, @NonNull Scheduler postExecutionThread) {
+    protected SingleInteractor(@NonNull Scheduler threadExecutor, @NonNull Scheduler postExecutionThread) {
         super();
         this.jobScheduler = threadExecutor;
         this.uiScheduler = postExecutionThread;
     }
 
 
-    public abstract Observable<R> buildUseCaseObservable();
+    public abstract Single<R> buildUseCaseObservable();
 
-    public Observable<R> run() {
+    public Single<R> run() {
         return this.buildUseCaseObservable()
                    .subscribeOn(jobScheduler)
                    .observeOn(uiScheduler);

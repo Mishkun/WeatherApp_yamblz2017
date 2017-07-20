@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
-import android.util.Log;
 
 import com.google.gson.Gson;
 import com.jakewharton.rxrelay2.BehaviorRelay;
@@ -12,7 +11,7 @@ import com.mishkun.weatherapp.domain.entities.Location;
 import com.mishkun.weatherapp.domain.entities.Temperature;
 import com.mishkun.weatherapp.domain.entities.Weather;
 import com.mishkun.weatherapp.domain.entities.WeatherConditions;
-import com.mishkun.weatherapp.domain.providers.CurrentWeatherProvider;
+import com.mishkun.weatherapp.domain.outerworld.CurrentWeatherProvider;
 
 import java.util.Date;
 
