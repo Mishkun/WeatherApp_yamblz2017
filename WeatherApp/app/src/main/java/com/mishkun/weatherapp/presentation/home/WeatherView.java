@@ -10,7 +10,7 @@ import io.reactivex.functions.Consumer;
 
 interface WeatherView {
     Observable<Object> getRefreshCalls();
-    Consumer<Weather> getWeatherConsumer();
+    Consumer<WeatherViewModel> getWeatherConsumer();
     Consumer<String> getErrorConsumer();
     Consumer<Boolean> getLoadingStatusConsumer();
 }

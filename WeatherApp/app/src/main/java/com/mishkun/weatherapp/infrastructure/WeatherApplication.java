@@ -20,16 +20,14 @@ import javax.inject.Inject;
 public class WeatherApplication extends Application implements HasComponent<AppComponent> {
 
     private AppComponent appComponent;
+    private ScheduleWeatherUpdate scheduleWeatherUpdate;
+    private GetWeatherUpdatesFrequency getWeatherUpdatesFrequency;
 
     @Inject
     public void Inject(ScheduleWeatherUpdate scheduleWeatherUpdate, GetWeatherUpdatesFrequency getWeatherUpdatesFrequency){
         this.scheduleWeatherUpdate = scheduleWeatherUpdate;
         this.getWeatherUpdatesFrequency = getWeatherUpdatesFrequency;
     }
-
-    private ScheduleWeatherUpdate scheduleWeatherUpdate;
-    private GetWeatherUpdatesFrequency getWeatherUpdatesFrequency;
-
 
     @Override
     public void onCreate() {

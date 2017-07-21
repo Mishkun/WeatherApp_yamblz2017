@@ -87,7 +87,7 @@ public class SettingsFragment extends Fragment implements SettingsView {
     }
     @Override
     public Observable<Integer> getWeatherUpdateOptionCalls() {
-        return RxAdapterView.itemSelections(spinner).skipInitialValue();
+        return RxAdapterView.itemSelections(spinner).skipInitialValue().skip(1);
     }
 
     @Override

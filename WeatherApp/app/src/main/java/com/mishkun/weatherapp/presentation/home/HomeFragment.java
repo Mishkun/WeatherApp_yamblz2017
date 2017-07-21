@@ -97,38 +97,13 @@ public class HomeFragment extends Fragment implements WeatherView {
 
 
     @Override
-    public Consumer<Weather> getWeatherConsumer() {
+    public Consumer<WeatherViewModel> getWeatherConsumer() {
         return weather -> {
-            humidityView.setText(String.format(getString(R.string.humidity_fmt_string), weather.getHumidity()));
-            degreesView.setText(String.format(getString(R.string.temperature_fmt_string), weather.getTemperature().getCelsiusDegrees()));
-            pressureView.setText(String.format(getString(R.string.pressure_fmt_string), weather.getPressureMmHg()));
-            windView.setText(String.format(getString(R.string.wind_fmt_string), weather.getWindSpeed()));
-            switch (weather.getWeatherConditions()) {
-                case RAIN:
-                    imageView.setBackgroundResource(R.drawable.rain);
-                    break;
-                case CLOUDY:
-                    imageView.setBackgroundResource(R.drawable.cloudy);
-                    break;
-                case PARTLY_CLOUDY:
-                    imageView.setBackgroundResource(R.drawable.partly_cloudy);
-                    break;
-                case THUNDERSTORM:
-                    imageView.setBackgroundResource(R.drawable.thunderstorm);
-                    break;
-                case FOG:
-                    imageView.setBackgroundResource(R.drawable.fog);
-                    break;
-                case CLEAR:
-                    imageView.setBackgroundResource(R.drawable.sun);
-                    break;
-                case DRIZZLE:
-                    imageView.setBackgroundResource(R.drawable.drizzle);
-                    break;
-                case SNOW:
-                    imageView.setBackgroundResource(R.drawable.snowflake);
-                    break;
-            }
+            humidityView.setText(weather.getHumidityText());
+            degreesView.setText(weather.getDegreesText());
+            pressureView.setText(weather.getPressureText());
+            windView.setText(weather.getWindText());
+            imageView.setBackgroundResource(weather.getIconResource());
         };
     }
 

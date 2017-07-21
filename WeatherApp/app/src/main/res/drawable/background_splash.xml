@@ -10,7 +10,7 @@
         android:top="128dp"
         android:left="128dp"
         android:gravity="center"
-        android:drawable="@drawable/splash"/>
+        android:drawable="@drawable/sun"/>
     <item>
     </item>
 

@@ -1,6 +1,7 @@
 package com.mishkun.weatherapp.jobs;
 
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import com.evernote.android.job.Job;
 import com.evernote.android.job.JobRequest;
@@ -37,7 +38,7 @@ public class WeatherJob extends Job {
     @NonNull
     @Override
     protected Result onRunJob(Params params) {
-        updateWeather.run(currentLocation).subscribe();
+        updateWeather.run(currentLocation).doOnError((ignore) -> Log.d(TAG, "onRunJob: " + ignore.toString())).subscribe();
         return Result.SUCCESS;
     }
 }

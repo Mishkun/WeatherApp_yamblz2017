@@ -8,6 +8,6 @@
         android:width="128dp"
         android:height="128dp"
         android:gravity="center"
-        android:drawable="@drawable/splash"/>
+        android:drawable="@drawable/sun"/>
 
 </layer-list>
