@@ -1,11 +1,12 @@
 package com.mishkun.weatherapp.jobs;
 
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import com.evernote.android.job.Job;
 import com.evernote.android.job.JobRequest;
 import com.mishkun.weatherapp.domain.entities.Location;
-import com.mishkun.weatherapp.domain.providers.CurrentWeatherProvider;
+import com.mishkun.weatherapp.domain.interactors.UpdateWeather;
 
 import java.util.concurrent.TimeUnit;
 
@@ -14,19 +15,21 @@ import java.util.concurrent.TimeUnit;
  */
 
 public class WeatherJob extends Job {
-    public static final String TAG = "WeatherJob";
+    static final String TAG = "WeatherJob";
 
-    private CurrentWeatherProvider currentWeatherProvider;
     private Location currentLocation = new Location(55.75222, 37.61556);
+    private final UpdateWeather updateWeather;
 
-    public WeatherJob(CurrentWeatherProvider currentWeatherProvider) {
-        this.currentWeatherProvider = currentWeatherProvider;
+
+    WeatherJob(UpdateWeather updateWeather) {
+        this.updateWeather = updateWeather;
     }
 
-    public static int scheduleJob(int minutes) {
+    static int scheduleJob(long millis) {
         return new JobRequest.Builder(TAG)
                 .setPersisted(true)
-                .setPeriodic(TimeUnit.MINUTES.toMillis(minutes))
+                .setPeriodic(millis, TimeUnit.MINUTES.toMillis(10))
+                .setUpdateCurrent(true)
                 .setRequiredNetworkType(JobRequest.NetworkType.CONNECTED)
                 .build()
                 .schedule();
@@ -35,7 +38,7 @@ public class WeatherJob extends Job {
     @NonNull
     @Override
     protected Result onRunJob(Params params) {
-        currentWeatherProvider.refreshData(currentLocation).subscribe();
+        updateWeather.run(currentLocation).doOnError((ignore) -> Log.d(TAG, "onRunJob: " + ignore.toString())).subscribe();
         return Result.SUCCESS;
     }
 }

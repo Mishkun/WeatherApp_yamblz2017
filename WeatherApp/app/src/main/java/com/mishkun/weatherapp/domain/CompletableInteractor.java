@@ -2,9 +2,10 @@ package com.mishkun.weatherapp.domain;
 
 import android.support.annotation.NonNull;
 
+import com.mishkun.weatherapp.common.Subscriptable;
+
 import io.reactivex.Completable;
 import io.reactivex.Scheduler;
-import io.reactivex.observers.DisposableCompletableObserver;
 
 /**
  * Created by Mishkun on 14.07.2017.
@@ -22,10 +23,10 @@ public abstract class CompletableInteractor<P> extends Subscriptable {
     }
 
 
-    public abstract Completable buildUseCaseObservable(P params);
+    public abstract Completable buildUseCaseCompletable(P params);
 
-    public Completable get(P params) {
-       return this.buildUseCaseObservable(params)
+    public Completable run(P params) {
+       return this.buildUseCaseCompletable(params)
                                            .subscribeOn(jobScheduler)
                                            .observeOn(uiScheduler);
     }

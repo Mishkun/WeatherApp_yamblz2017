@@ -1,9 +1,10 @@
 package com.mishkun.weatherapp.domain.interactors;
 
-import com.mishkun.weatherapp.di.UtilsModule;
+import android.util.Log;
+
 import com.mishkun.weatherapp.domain.CompletableInteractor;
 import com.mishkun.weatherapp.domain.entities.Location;
-import com.mishkun.weatherapp.domain.providers.CurrentWeatherProvider;
+import com.mishkun.weatherapp.domain.outerworld.CurrentWeatherProvider;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -12,8 +13,8 @@ import io.reactivex.Completable;
 import io.reactivex.Scheduler;
 import io.reactivex.annotations.NonNull;
 
-import static com.mishkun.weatherapp.di.UtilsModule.JOB;
-import static com.mishkun.weatherapp.di.UtilsModule.UI;
+import static com.mishkun.weatherapp.di.NamedConsts.JOB;
+import static com.mishkun.weatherapp.di.NamedConsts.UI;
 
 /**
  * Created by Mishkun on 14.07.2017.
@@ -21,6 +22,7 @@ import static com.mishkun.weatherapp.di.UtilsModule.UI;
 
 public class UpdateWeather extends CompletableInteractor<Location> {
 
+    private static final String TAG = UpdateWeather.class.getSimpleName();
     private final CurrentWeatherProvider currentWeatherProvider;
 
     @Inject
@@ -31,7 +33,7 @@ public class UpdateWeather extends CompletableInteractor<Location> {
     }
 
     @Override
-    public Completable buildUseCaseObservable(Location location) {
+    public Completable buildUseCaseCompletable(Location location) {
         return currentWeatherProvider.refreshData(location);
     }
 }

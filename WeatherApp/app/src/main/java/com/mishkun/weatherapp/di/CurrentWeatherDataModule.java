@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.mishkun.weatherapp.data.current_weather.OpenWeatherMapApi;
 import com.mishkun.weatherapp.data.current_weather.OpenWeatherMapCurrentWeatherRepository;
-import com.mishkun.weatherapp.domain.providers.CurrentWeatherProvider;
+import com.mishkun.weatherapp.domain.outerworld.CurrentWeatherProvider;
 
 import javax.inject.Singleton;
 
@@ -18,12 +18,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by Mishkun on 16.07.2017.
  */
 @Module
-public class CurrentWeatherModule {
-
+class CurrentWeatherDataModule {
 
     @Provides
     @Singleton
-    public OpenWeatherMapApi provideOpenWeatherMapApi() {
+    OpenWeatherMapApi provideOpenWeatherMapApi() {
         return new Retrofit.Builder()
                 .baseUrl("http://api.openweathermap.org/data/2.5/").addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
@@ -33,7 +32,7 @@ public class CurrentWeatherModule {
 
     @Provides
     @Singleton
-    public CurrentWeatherProvider provideCurrentWeather(OpenWeatherMapApi openWeatherMapApi, Context context) {
+    CurrentWeatherProvider provideCurrentWeather(OpenWeatherMapApi openWeatherMapApi, Context context) {
         return new OpenWeatherMapCurrentWeatherRepository(openWeatherMapApi, context);
     }
 }

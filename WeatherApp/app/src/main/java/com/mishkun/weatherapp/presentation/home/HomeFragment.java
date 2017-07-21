@@ -1,4 +1,4 @@
-package com.mishkun.weatherapp.view;
+package com.mishkun.weatherapp.presentation.home;
 
 
 import android.os.Bundle;
@@ -16,10 +16,9 @@ import android.widget.Toast;
 
 import com.jakewharton.rxbinding2.support.v4.widget.RxSwipeRefreshLayout;
 import com.mishkun.weatherapp.R;
-import com.mishkun.weatherapp.di.WeatherApplication;
+import com.mishkun.weatherapp.di.HasComponent;
+import com.mishkun.weatherapp.di.WeatherScreenComponent;
 import com.mishkun.weatherapp.domain.entities.Weather;
-import com.mishkun.weatherapp.presentation.WeatherRxPresenter;
-import com.mishkun.weatherapp.presentation.WeatherView;
 
 import javax.inject.Inject;
 
@@ -55,9 +54,10 @@ public class HomeFragment extends Fragment implements WeatherView {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ((WeatherApplication) getActivity().getApplication()).getAppComponent().inject(this);
+        ((HasComponent<WeatherScreenComponent>) getActivity()).getComponent().inject(this);
     }
 
     @Override
@@ -97,38 +97,13 @@ public class HomeFragment extends Fragment implements WeatherView {
 
 
     @Override
-    public Consumer<Weather> getWeatherConsumer() {
+    public Consumer<WeatherViewModel> getWeatherConsumer() {
         return weather -> {
-            humidityView.setText(String.format(getString(R.string.humidity_fmt_string), weather.getHumidity()));
-            degreesView.setText(String.format(getString(R.string.temperature_fmt_string), weather.getTemperature().getCelsiusDegrees()));
-            pressureView.setText(String.format(getString(R.string.pressure_fmt_string), weather.getPressureMmHg()));
-            windView.setText(String.format(getString(R.string.wind_fmt_string), weather.getWindSpeed()));
-            switch (weather.getWeatherConditions()) {
-                case RAIN:
-                    imageView.setBackgroundResource(R.drawable.rain);
-                    break;
-                case CLOUDY:
-                    imageView.setBackgroundResource(R.drawable.cloudy);
-                    break;
-                case PARTLY_CLOUDY:
-                    imageView.setBackgroundResource(R.drawable.partly_cloudy);
-                    break;
-                case THUNDERSTORM:
-                    imageView.setBackgroundResource(R.drawable.thunderstorm);
-                    break;
-                case FOG:
-                    imageView.setBackgroundResource(R.drawable.fog);
-                    break;
-                case CLEAR:
-                    imageView.setBackgroundResource(R.drawable.sun);
-                    break;
-                case DRIZZLE:
-                    imageView.setBackgroundResource(R.drawable.drizzle);
-                    break;
-                case SNOW:
-                    imageView.setBackgroundResource(R.drawable.snowflake);
-                    break;
-            }
+            humidityView.setText(weather.getHumidityText());
+            degreesView.setText(weather.getDegreesText());
+            pressureView.setText(weather.getPressureText());
+            windView.setText(weather.getWindText());
+            imageView.setBackgroundResource(weather.getIconResource());
         };
     }
 

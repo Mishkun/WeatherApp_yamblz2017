@@ -1,4 +1,4 @@
-package com.mishkun.weatherapp.domain;
+package com.mishkun.weatherapp.common;
 
 import android.support.annotation.NonNull;
 
@@ -9,14 +9,14 @@ import io.reactivex.disposables.Disposable;
  * Created by Mishkun on 14.07.2017.
  */
 
-class Subscriptable {
+abstract public class Subscriptable {
     private final CompositeDisposable subscriptions;
 
-    protected Subscriptable() {
+    public Subscriptable() {
         this.subscriptions = new CompositeDisposable();
     }
 
-    public void dispose() {
+    protected void dispose() {
         if (!subscriptions.isDisposed()) {
             subscriptions.dispose();
         }

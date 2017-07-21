@@ -21,5 +21,6 @@
     <string name="pressure_fmt_string">pressure: %.1f mm Hg</string>
     <string name="temperature_fmt_string">%.0f°</string>
     <string name="wind_fmt_string">wind: %.1f m/s</string>
+    <string name="refresh_weather_setting">Refresh weather every</string>
 
 </resources>

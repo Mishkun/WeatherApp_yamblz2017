@@ -33,9 +33,5 @@ ext{
     gson_converter = "com.squareup.retrofit2:converter-gson:$retrofit_version"
     retrofit_rxadapter = "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
 
-    lifecycle_runtime = "android.arch.lifecycle:runtime:$lifecycle_version"
-    lifecycle_ext = "android.arch.lifecycle:extensions:$lifecycle_version"
-    lifecycle_processor = "android.arch.lifecycle:compiler:$lifecycle_version"
-
     android_job = "com.evernote:android-job:$android_job_version"
 }
