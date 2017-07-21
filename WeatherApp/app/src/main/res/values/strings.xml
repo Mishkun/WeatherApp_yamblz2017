@@ -13,5 +13,13 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">WeatherApp\nAuthor: mishkun</string>
-    <string name="cool_preference_summary">Cool preference</string>
+    <string name="time_schedule_preference_summary">Update weather every</string>
+    <string name="moscow">Moscow</string>
+    <string name="time_preference_key" translatable="false">time_preference</string>
+    <string name="default_time_prefernce_value" translatable="false">15</string>
+    <string name="humidity_fmt_string">humidity: %.0f%%</string>
+    <string name="pressure_fmt_string">pressure: %.1f mm Hg</string>
+    <string name="temperature_fmt_string">%.0f°</string>
+    <string name="wind_fmt_string">wind: %.1f m/s</string>
+
 </resources>

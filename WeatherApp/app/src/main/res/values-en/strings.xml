@@ -3,10 +3,15 @@
     <string name="app_name">WeatherApp</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="cool_preference_summary">Cool preference</string>
+    <string name="time_schedule_preference_summary">Update weather every</string>
     <string name="hello_world">Hello, world!</string>
     <string name="about_title">About App</string>
     <string name="settings_title">Settings</string>
     <string name="home_title">Main</string>
     <string name="hello_blank_fragment">WeatherApp\nAuthor: mishkun</string>
+    <string name="moscow">Moscow</string>
+    <string name="wind_fmt_string">wind: %.1f m/s</string>
+    <string name="temperature_fmt_string">%.0f°</string>
+    <string name="pressure_fmt_string">pressure: %.1f mm Hg</string>
+    <string name="humidity_fmt_string">humidity: %.0f%%</string>
 </resources>

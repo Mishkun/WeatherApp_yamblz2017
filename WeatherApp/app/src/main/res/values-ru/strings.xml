@@ -8,5 +8,10 @@
     <string name="about_title">О Приложении</string>
     <string name="hello_world">Здравствуй, мир!</string>
     <string name="hello_blank_fragment">Приложение Погода\nАвтор: mishkun</string>
-    <string name="cool_preference_summary">Прикольная настройка</string>
+    <string name="time_schedule_preference_summary">Обновлять погоду каждые</string>
+    <string name="moscow">Москва</string>
+    <string name="humidity_fmt_string">влажность: %.0f%%</string>
+    <string name="pressure_fmt_string">давление: %.1f мм ртутного столба</string>
+    <string name="temperature_fmt_string">%.0f°</string>
+    <string name="wind_fmt_string">ветер: %.1f м/с</string>
 </resources>

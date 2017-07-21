@@ -1,26 +1,25 @@
 apply plugin: 'com.android.application'
+apply from: rootProject.file('dependencies-mapping.gradle')
+apply from: rootProject.file('keystore-functions.gradle')
 
-def keystorePropertiesFile = rootProject.file("keystore.properties")
-def keystoreProperties = new Properties()
-keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
 android {
-    compileSdkVersion 25
+    compileSdkVersion rootProject.target_sdk
     buildToolsVersion "25.0.2"
     defaultConfig {
         applicationId "com.mishkun.weatherapp"
-        minSdkVersion 19
-        targetSdkVersion 25
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion rootProject.minimum_sdk
+        targetSdkVersion rootProject.target_sdk
+        versionCode rootProject.version_code
+        versionName rootProject.version_name
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     signingConfigs {
         release {
-            keyAlias keystoreProperties['keyAlias']
-            keyPassword keystoreProperties['keyPassword']
-            storeFile file(keystoreProperties['storeFile'])
-            storePassword keystoreProperties['storePassword']
+            keyAlias keystore_properties['keyAlias']
+            keyPassword keystore_properties['keyPassword']
+            storeFile file(keystore_properties['storeFile'])
+            storePassword keystore_properties['storePassword']
         }
     }
     buildTypes {
@@ -34,6 +33,10 @@ android {
             debuggable true
         }
     }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
 }
 
 dependencies {
@@ -42,16 +45,50 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
+    // android libraries
     compile(
-            rootProject.support_appcompat_v7,
-            rootProject.support_design,
-            rootProject.support_appcompat_v7,
-            rootProject.support_design,
-            rootProject.support_preference,
-            rootProject.constraint
+            support_appcompat_v7,
+            support_design,
+            support_appcompat_v7,
+            support_design,
+            support_preference,
+            constraint
+    )
+    implementation support_v4
+
+    // Lifecycle
+    compile (
+            lifecycle_runtime,
+            lifecycle_ext
+    )
+    annotationProcessor lifecycle_processor
+
+    // Rx
+    compile(
+            rxandroid,
+            rxrelay,
+            rxjava,
+            rxbinding,
+            rxbinding_support_v4
     )
 
-    implementation rootProject.support_v4
+    // Dagger
+    compile dagger
+    annotationProcessor dagger_processor
+
+    //Butterknife
+    compile butterknife
+    annotationProcessor butterknife_processor
+
+    //Retrofit
+    compile(
+            retrofit,
+            gson_converter,
+            retrofit_rxadapter
+    )
+
+    // Android job
+    compile android_job
 
     testCompile 'junit:junit:4.12'
 }
