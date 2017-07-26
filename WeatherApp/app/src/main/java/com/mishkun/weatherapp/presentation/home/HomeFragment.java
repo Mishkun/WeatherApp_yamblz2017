@@ -53,10 +53,10 @@ public class HomeFragment extends Fragment implements WeatherView {
         // Required empty public constructor
     }
 
-    @Override
     @SuppressWarnings("unchecked")
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
         ((HasComponent<WeatherScreenComponent>) getActivity()).getComponent().inject(this);
     }
 

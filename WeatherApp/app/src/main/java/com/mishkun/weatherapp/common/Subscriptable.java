@@ -17,9 +17,7 @@ abstract public class Subscriptable {
     }
 
     protected void dispose() {
-        if (!subscriptions.isDisposed()) {
-            subscriptions.dispose();
-        }
+        subscriptions.clear();
     }
 
     protected void addSubscription(@NonNull Disposable disposable) {

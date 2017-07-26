@@ -44,12 +44,13 @@ public class WeatherRxPresenter extends RxPresenter<WeatherView> {
     @Override
     protected void onAttach() {
         Completable weatherRefreshSubscription = view.getRefreshCalls()
-                                                     .filter((ignore) -> !loadingStatus.getValue())
-                                                     .doOnNext((ignore) -> loadingStatus.accept(true))
-                                                     .flatMapCompletable((ignore) -> updateWeather.run(currentLocation))
-                                                     .doFinally(() -> loadingStatus.accept(false));
-        addSubscription(weatherRefreshSubscription.subscribe(() -> loadingStatus.accept(false),
-                                                             (error) -> errorMessages.accept(error.getLocalizedMessage())));
+                .filter((ignore) -> !loadingStatus.getValue())
+                .doOnNext((ignore) -> loadingStatus.accept(true))
+                .flatMapCompletable((ignore) -> updateWeather.run(currentLocation)
+                        .doOnError((error) -> errorMessages.accept(error.getLocalizedMessage()))
+                        .onErrorComplete()
+                        .doFinally(() -> loadingStatus.accept(false)));
+        addSubscription(weatherRefreshSubscription.subscribe());
         addSubscription(weatherStatus.hide().map(weatherMapper::toWeatherViewModel).subscribe(view.getWeatherConsumer()));
         addSubscription(loadingStatus.subscribe(view.getLoadingStatusConsumer()));
         addSubscription(errorMessages.subscribe(view.getErrorConsumer()));
