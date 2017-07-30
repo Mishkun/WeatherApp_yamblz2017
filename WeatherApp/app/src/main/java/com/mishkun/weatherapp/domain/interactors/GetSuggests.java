@@ -2,8 +2,8 @@ package com.mishkun.weatherapp.domain.interactors;
 
 
 import com.mishkun.weatherapp.domain.SingleInteractor;
-import com.mishkun.weatherapp.domain.entities.citiesSuggest.Prediction;
-import com.mishkun.weatherapp.domain.repositories.SuggestRepository;
+import com.mishkun.weatherapp.data.google_places.citiesSuggest.Prediction;
+import com.mishkun.weatherapp.data.google_places.repositories.SuggestRepository;
 
 import java.util.List;
 

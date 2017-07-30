@@ -5,7 +5,7 @@ package com.mishkun.weatherapp.presentation.suggest;
  */
 
 
-import com.mishkun.weatherapp.domain.entities.citiesSuggest.Prediction;
+import com.mishkun.weatherapp.data.google_places.citiesSuggest.Prediction;
 
 import java.util.List;
 

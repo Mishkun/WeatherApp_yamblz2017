@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.mishkun.weatherapp.R;
-import com.mishkun.weatherapp.domain.entities.citiesSuggest.Prediction;
+import com.mishkun.weatherapp.data.google_places.citiesSuggest.Prediction;
 
 import java.util.List;
 

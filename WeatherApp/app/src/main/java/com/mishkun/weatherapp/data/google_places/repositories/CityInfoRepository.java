@@ -1,4 +1,4 @@
-package com.mishkun.weatherapp.domain.repositories;
+package com.mishkun.weatherapp.data.google_places.repositories;
 /*
  * Created by DV on Space 5 
  * 26.07.2017

@@ -1,11 +1,11 @@
-package com.mishkun.weatherapp.domain.repositories;
+package com.mishkun.weatherapp.data.google_places.repositories;
 /*
  * Created by DV on Space 5 
  * 25.07.2017
  */
 
 import com.mishkun.weatherapp.domain.entities.City;
-import com.mishkun.weatherapp.domain.entities.citiesSuggest.Prediction;
+import com.mishkun.weatherapp.data.google_places.citiesSuggest.Prediction;
 
 import java.util.List;
 

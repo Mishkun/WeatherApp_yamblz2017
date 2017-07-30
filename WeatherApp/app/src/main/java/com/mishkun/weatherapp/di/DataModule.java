@@ -6,10 +6,10 @@ import com.mishkun.weatherapp.data.current_weather.OpenWeatherMapApi;
 import com.mishkun.weatherapp.data.current_weather.OpenWeatherMapCurrentWeatherRepository;
 import com.mishkun.weatherapp.data.google_places.GooglePlacesApi;
 import com.mishkun.weatherapp.domain.outerworld.CurrentWeatherProvider;
-import com.mishkun.weatherapp.domain.repositories.CityInfoRepository;
-import com.mishkun.weatherapp.domain.repositories.GoogleSuggestRepository;
-import com.mishkun.weatherapp.domain.repositories.SharedPrefsCityRepository;
-import com.mishkun.weatherapp.domain.repositories.SuggestRepository;
+import com.mishkun.weatherapp.data.google_places.repositories.CityInfoRepository;
+import com.mishkun.weatherapp.data.google_places.repositories.GoogleSuggestRepository;
+import com.mishkun.weatherapp.data.google_places.repositories.SharedPrefsCityRepository;
+import com.mishkun.weatherapp.data.google_places.repositories.SuggestRepository;
 
 import javax.inject.Singleton;
 

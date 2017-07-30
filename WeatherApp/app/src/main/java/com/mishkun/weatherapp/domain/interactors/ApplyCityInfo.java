@@ -3,8 +3,8 @@ package com.mishkun.weatherapp.domain.interactors;
 import android.support.annotation.NonNull;
 
 import com.mishkun.weatherapp.domain.CompletableInteractor;
-import com.mishkun.weatherapp.domain.repositories.CityInfoRepository;
-import com.mishkun.weatherapp.domain.repositories.SuggestRepository;
+import com.mishkun.weatherapp.data.google_places.repositories.CityInfoRepository;
+import com.mishkun.weatherapp.data.google_places.repositories.SuggestRepository;
 
 import javax.inject.Inject;
 import javax.inject.Named;
