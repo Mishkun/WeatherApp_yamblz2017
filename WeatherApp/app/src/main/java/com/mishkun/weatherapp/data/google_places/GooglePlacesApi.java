@@ -4,8 +4,8 @@ package com.mishkun.weatherapp.data.google_places;
  * 24.07.2017
  */
 
-import com.mishkun.weatherapp.domain.entities.citiesSuggest.CitiesSuggest;
-import com.mishkun.weatherapp.domain.entities.detailCityInfo.DetailCityInfo;
+import com.mishkun.weatherapp.data.google_places.citiesSuggest.CitiesSuggest;
+import com.mishkun.weatherapp.data.google_places.detailCityInfo.DetailCityInfo;
 
 import io.reactivex.Single;
 import retrofit2.http.GET;

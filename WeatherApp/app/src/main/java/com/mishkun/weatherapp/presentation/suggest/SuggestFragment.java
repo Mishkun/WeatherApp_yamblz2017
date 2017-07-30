@@ -23,7 +23,7 @@ import com.jakewharton.rxbinding2.widget.RxTextView;
 import com.mishkun.weatherapp.R;
 import com.mishkun.weatherapp.di.AppComponent;
 import com.mishkun.weatherapp.di.HasComponent;
-import com.mishkun.weatherapp.domain.entities.citiesSuggest.Prediction;
+import com.mishkun.weatherapp.data.google_places.citiesSuggest.Prediction;
 
 import java.util.ArrayList;
 import java.util.List;

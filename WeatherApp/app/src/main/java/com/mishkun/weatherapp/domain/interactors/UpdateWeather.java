@@ -1,12 +1,8 @@
 package com.mishkun.weatherapp.domain.interactors;
 
-import android.util.Log;
-
-import com.mishkun.weatherapp.domain.CompletableInteractor;
 import com.mishkun.weatherapp.domain.CompletableParameterlessInteractor;
-import com.mishkun.weatherapp.domain.entities.Location;
 import com.mishkun.weatherapp.domain.outerworld.CurrentWeatherProvider;
-import com.mishkun.weatherapp.domain.repositories.CityInfoRepository;
+import com.mishkun.weatherapp.data.google_places.repositories.CityInfoRepository;
 
 import javax.inject.Inject;
 import javax.inject.Named;

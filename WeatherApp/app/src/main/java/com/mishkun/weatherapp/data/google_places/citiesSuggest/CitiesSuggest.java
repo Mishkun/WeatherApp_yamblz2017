@@ -1,5 +1,5 @@
 
-package com.mishkun.weatherapp.domain.entities.citiesSuggest;
+package com.mishkun.weatherapp.data.google_places.citiesSuggest;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

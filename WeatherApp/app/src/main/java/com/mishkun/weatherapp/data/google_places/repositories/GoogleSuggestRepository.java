@@ -1,4 +1,4 @@
-package com.mishkun.weatherapp.domain.repositories;
+package com.mishkun.weatherapp.data.google_places.repositories;
 /*
  * Created by DV on Space 5 
  * 25.07.2017
@@ -9,8 +9,8 @@ import android.util.Log;
 import com.mishkun.weatherapp.data.google_places.GooglePlacesApi;
 import com.mishkun.weatherapp.domain.entities.City;
 import com.mishkun.weatherapp.domain.entities.Location;
-import com.mishkun.weatherapp.domain.entities.citiesSuggest.CitiesSuggest;
-import com.mishkun.weatherapp.domain.entities.citiesSuggest.Prediction;
+import com.mishkun.weatherapp.data.google_places.citiesSuggest.CitiesSuggest;
+import com.mishkun.weatherapp.data.google_places.citiesSuggest.Prediction;
 
 
 import java.util.List;
@@ -36,7 +36,7 @@ public class GoogleSuggestRepository implements SuggestRepository {
     public Single<City> getCityCoordinates(String cityID) {
         return googlePlacesApi.getDetailPlaceInfo(cityID, API_KEY_GOOGLE)
                 .map((coords) -> {
-                    com.mishkun.weatherapp.domain.entities.detailCityInfo.Location loc = coords.getResult().getGeometry().getLocation();
+                    com.mishkun.weatherapp.data.google_places.detailCityInfo.Location loc = coords.getResult().getGeometry().getLocation();
                     Log.v("CITY NAME, WTF?!", coords.getResult().getName());
                     return new City(coords.getResult().getName(), new Location(loc.getLat(), loc.getLng()));
                 });

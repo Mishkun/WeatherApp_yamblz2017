@@ -5,7 +5,7 @@ import android.support.annotation.NonNull;
 import com.mishkun.weatherapp.domain.ParameterlessInteractor;
 import com.mishkun.weatherapp.domain.entities.Weather;
 import com.mishkun.weatherapp.domain.outerworld.CurrentWeatherProvider;
-import com.mishkun.weatherapp.domain.repositories.CityInfoRepository;
+import com.mishkun.weatherapp.data.google_places.repositories.CityInfoRepository;
 
 import javax.inject.Inject;
 import javax.inject.Named;
