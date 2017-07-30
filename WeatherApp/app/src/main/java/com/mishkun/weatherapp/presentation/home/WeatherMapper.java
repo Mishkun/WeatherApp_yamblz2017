@@ -59,10 +59,10 @@ public class WeatherMapper {
                 res = R.drawable.sun;
         }
         return new WeatherViewModel(String.format(humidityFmt, weather.getHumidity()),
-                                    String.format(pressureFmt, weather.getPressureMmHg()),
-                                    String.format(temperatureFmt, weather.getTemperature().getCelsiusDegrees()),
-                                    String.format(windFmt, weather.getWindSpeed()),
-                                    res);
+                String.format(pressureFmt, weather.getPressureMmHg()),
+                String.format(temperatureFmt, weather.getTemperature().getCelsiusDegrees()),
+                String.format(windFmt, weather.getWindSpeed()),
+                res, weather.getCityName());
     }
 
 }

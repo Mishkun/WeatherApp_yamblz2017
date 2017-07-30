@@ -49,15 +49,15 @@ public class OpenWeatherMapCurrentWeatherRepository implements CurrentWeatherPro
         if (weather != null) {
             return WeatherMapper.toDomain(weather, new Date().getTime());
         }
-        return new Weather(new Temperature(295), 90, 769, WeatherConditions.CLEAR, 0, 1500046530);
+        return new Weather(new Temperature(295), 90, 769, WeatherConditions.CLEAR, 0, 1500046530, "MoscoW");
     }
 
     @Override
     public Completable refreshData(@NonNull Location location) {
         return Completable.fromObservable(openWeatherMapApi.getWeather(location.getLatitude(), location.getLongitude(), API_KEY)
-                                                           .doOnNext(this::cacheIt)
-                                                           .map((weather) -> WeatherMapper.toDomain(weather, new Date().getTime()))
-                                                           .doOnNext(weatherBehaviorSubject));
+                .doOnNext(this::cacheIt)
+                .map((weather) -> WeatherMapper.toDomain(weather, new Date().getTime()))
+                .doOnNext(weatherBehaviorSubject));
     }
 
     @SuppressLint("CommitPrefEdits")
@@ -66,10 +66,8 @@ public class OpenWeatherMapCurrentWeatherRepository implements CurrentWeatherPro
         Gson gson = new Gson();
         String weatherjson = gson.toJson(weather, com.mishkun.weatherapp.data.current_weather.Weather.class);
 
-        sharedPreferences.edit().putString(cache, weatherjson).commit();
+        sharedPreferences.edit().putString(cache, weatherjson).apply();
     }
-
-
 
     @Override
     public Observable<Weather> getCurrentWeatherSubscription() {

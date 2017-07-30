@@ -22,6 +22,16 @@ class Weather {
     @SerializedName("main")
     Main main;
 
+    public Weather(){
+
+    }
+
+    public Weather(Wind wind, List<WeatherConditions> weather, Main main) {
+        this.wind = wind;
+        this.weather = weather;
+        this.main = main;
+    }
+
     static class WeatherConditions {
 
         @SerializedName("id")
