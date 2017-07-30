@@ -19,7 +19,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="32dp"
-            android:text="@string/moscow"
             android:textColor="@android:color/white"
             android:textSize="@dimen/large_text"
             app:layout_constraintEnd_toEndOf="parent"
