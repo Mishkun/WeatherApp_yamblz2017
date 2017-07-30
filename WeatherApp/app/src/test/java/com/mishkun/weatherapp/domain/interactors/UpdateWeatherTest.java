@@ -34,7 +34,6 @@ public class UpdateWeatherTest {
     public void setUp() throws Exception {
         updateWeather = new UpdateWeather(testScheduler, testScheduler, currentWeatherProvider, cityInfoRepository);
         Location location = new Location(10.0, 10.0);
-        //when(currentWeatherProvider.refreshData(location)).thenReturn(Completable.complete());
         when(cityInfoRepository.getCityCoordinate()).thenReturn(Single.just(location));
     }
 

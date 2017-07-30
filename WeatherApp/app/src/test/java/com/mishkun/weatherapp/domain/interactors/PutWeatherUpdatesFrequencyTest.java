@@ -29,8 +29,6 @@ public class PutWeatherUpdatesFrequencyTest{
     public void setUp(){
         MockitoAnnotations.initMocks(this);
         putWeatherUpdatesFrequency = new PutWeatherUpdatesFrequency(testScheduler, testScheduler, updatePreferenceProvider);
-        //Is this needed?
-        //when(updatePreferenceProvider.setUpdateFrequency(anyLong())).thenReturn(Completable.complete());
     }
 
     @Test

@@ -18,25 +18,10 @@ public class WeatherMapperTest {
 
     @Before
     public void setUp(){
-//        weather = new Weather(new Temperature(250.0),
-//                99.0,
-//                1000.0,
-//                WeatherConditions.RAIN,
-//                50.0,
-//                100000,
-//                "Moscow" );
     }
 
     @Test
     public void test_toDomain() throws Exception {
-//        when(weather.getCityName()).thenReturn("Moscow");
-//        when(weather.getHumidity()).thenReturn(anyDouble());
-//        when(weather.getPressureMmHg()).thenReturn(anyDouble());
-//        when(weather.getTemperature()).thenReturn(new Temperature(250.0));
-//        when(weather.getTime()).thenReturn(new Date(anyInt()));
-//        when(weather.getWeatherConditions()).thenReturn(WeatherConditions.RAIN);
-//        when(weather.getTimestamp()).thenReturn(anyLong());
-//        when(weather.getWindSpeed()).thenReturn(anyDouble());
         ArrayList<Weather.WeatherConditions> arrayList = new ArrayList<>();
         arrayList.add(new com.mishkun.weatherapp.data.current_weather.Weather.WeatherConditions());
 
