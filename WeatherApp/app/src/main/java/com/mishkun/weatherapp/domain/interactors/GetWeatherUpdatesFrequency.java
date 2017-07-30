@@ -3,6 +3,7 @@ package com.mishkun.weatherapp.domain.interactors;
 import android.support.annotation.NonNull;
 
 import com.mishkun.weatherapp.domain.SingleInteractor;
+import com.mishkun.weatherapp.domain.SingleParameterlessInteractor;
 import com.mishkun.weatherapp.domain.outerworld.UpdatePreferenceProvider;
 
 import javax.inject.Inject;
@@ -18,7 +19,7 @@ import static com.mishkun.weatherapp.di.NamedConsts.UI;
  * Created by Mishkun on 19.07.2017.
  */
 
-public class GetWeatherUpdatesFrequency extends SingleInteractor<Long> {
+public class GetWeatherUpdatesFrequency extends SingleParameterlessInteractor<Long> {
     private final UpdatePreferenceProvider updatePreferenceProvider;
 
     @Inject

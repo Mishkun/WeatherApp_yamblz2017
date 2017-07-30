@@ -4,7 +4,6 @@ import android.support.annotation.NonNull;
 
 import com.mishkun.weatherapp.common.Subscriptable;
 
-import dagger.Subcomponent;
 import io.reactivex.Scheduler;
 import io.reactivex.Single;
 
@@ -12,23 +11,22 @@ import io.reactivex.Single;
  * Created by Mishkun on 19.07.2017.
  */
 
-public abstract class SingleInteractor<P, R> {
+public abstract class SingleParameterlessInteractor<R> extends Subscriptable {
     private final Scheduler jobScheduler;
     private final Scheduler uiScheduler;
 
 
-    protected SingleInteractor(@NonNull Scheduler threadExecutor, @NonNull Scheduler postExecutionThread) {
+    protected SingleParameterlessInteractor(@NonNull Scheduler threadExecutor, @NonNull Scheduler postExecutionThread) {
         super();
         this.jobScheduler = threadExecutor;
         this.uiScheduler = postExecutionThread;
     }
 
+    public abstract Single<R> buildUseCaseObservable();
 
-    public abstract Single<R> buildUseCaseObservable(P params);
-
-    public Single<R> run(P params) {
-        return this.buildUseCaseObservable(params)
-                .subscribeOn(jobScheduler)
-                .observeOn(uiScheduler);
+    public Single<R> run() {
+        return this.buildUseCaseObservable()
+                   .subscribeOn(jobScheduler)
+                   .observeOn(uiScheduler);
     }
 }
