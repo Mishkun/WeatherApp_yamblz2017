@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".HomeActivity"
-    android:background="#ffff00"
+    android:background="#ffffff"
     android:id="@+id/suggestFragment">
 
     <EditText
