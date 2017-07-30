@@ -10,9 +10,9 @@ import com.mishkun.weatherapp.domain.entities.WeatherConditions;
 class WeatherMapper {
     static com.mishkun.weatherapp.domain.entities.Weather toDomain(Weather weather, long timestamp) {
         return new com.mishkun.weatherapp.domain.entities.Weather(new Temperature(weather.main.temperature), weather.main.humidity,
-                                                                  hPaToMmHg(weather.main.pressureHPa),
-                                                                  codeToCondition(weather.weather.get(0).weather_id), weather.wind.windSpeed,
-                                                                  timestamp);
+                hPaToMmHg(weather.main.pressureHPa),
+                codeToCondition(weather.weather.get(0).weather_id), weather.wind.windSpeed,
+                timestamp, null);
     }
 
     // function to convert hectopascal to millimeter mercury. Formula from here: http://www.convertunits.com/from/mm+Hg/to/hPa

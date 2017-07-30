@@ -38,7 +38,7 @@ public class WeatherJob extends Job {
     @NonNull
     @Override
     protected Result onRunJob(Params params) {
-        updateWeather.run(currentLocation).doOnError((ignore) -> Log.d(TAG, "onRunJob: " + ignore.toString())).subscribe();
+        updateWeather.run().onErrorComplete().subscribe();
         return Result.SUCCESS;
     }
 }
