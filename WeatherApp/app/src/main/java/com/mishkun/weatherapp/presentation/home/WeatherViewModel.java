@@ -13,14 +13,16 @@ class WeatherViewModel {
     private final String degreesText;
     private final String windText;
     private final int iconResource;
+    private final String cityName;
 
     WeatherViewModel(@NonNull String humidityText, @NonNull String pressureText, @NonNull String degreesText, @NonNull String windText,
-                     @DrawableRes int iconResource) {
+                     @DrawableRes int iconResource, String cityName) {
         this.humidityText = humidityText;
         this.pressureText = pressureText;
         this.degreesText = degreesText;
         this.windText = windText;
         this.iconResource = iconResource;
+        this.cityName = cityName;
     }
 
     String getHumidityText() {
@@ -41,5 +43,9 @@ class WeatherViewModel {
 
     int getIconResource() {
         return iconResource;
+    }
+
+    String getCityName(){
+        return cityName;
     }
 }

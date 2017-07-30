@@ -5,6 +5,7 @@ import com.jakewharton.rxrelay2.PublishRelay;
 import com.mishkun.weatherapp.di.WeatherScreen;
 import com.mishkun.weatherapp.domain.entities.Location;
 import com.mishkun.weatherapp.domain.entities.Weather;
+import com.mishkun.weatherapp.domain.interactors.ApplyCityInfo;
 import com.mishkun.weatherapp.domain.interactors.GetWeatherSubscription;
 import com.mishkun.weatherapp.domain.interactors.UpdateWeather;
 import com.mishkun.weatherapp.presentation.RxPresenter;
@@ -25,8 +26,8 @@ public class WeatherRxPresenter extends RxPresenter<WeatherView> {
     private BehaviorRelay<Weather> weatherStatus;
     private BehaviorRelay<Boolean> loadingStatus;
     private PublishRelay<String> errorMessages;
-    // TODO - add location logic here, now it is harcoded to fit Moscow
-    private Location currentLocation = new Location(55.75222, 37.61556);
+
+    private ApplyCityInfo applyCityInfo;
 
     @Inject
     WeatherRxPresenter(GetWeatherSubscription getWeatherSubscription, UpdateWeather updateWeather,
@@ -38,6 +39,8 @@ public class WeatherRxPresenter extends RxPresenter<WeatherView> {
         errorMessages = PublishRelay.create();
         this.updateWeather = updateWeather;
         this.getWeatherSubscription.run().subscribe(weatherStatus);
+
+        // MAYBE HERE WILL BE SUBSCRIBE TO REPOSITORY WITH LOCATION? OR INTERACTOR?
     }
 
 
@@ -46,11 +49,15 @@ public class WeatherRxPresenter extends RxPresenter<WeatherView> {
         Completable weatherRefreshSubscription = view.getRefreshCalls()
                 .filter((ignore) -> !loadingStatus.getValue())
                 .doOnNext((ignore) -> loadingStatus.accept(true))
-                .flatMapCompletable((ignore) -> updateWeather.run(currentLocation)
+                .flatMapCompletable((ignore) -> updateWeather.run()
                         .doOnError((error) -> errorMessages.accept(error.getLocalizedMessage()))
                         .onErrorComplete()
                         .doFinally(() -> loadingStatus.accept(false)));
         addSubscription(weatherRefreshSubscription.subscribe());
+        addSubscription(updateWeather.run()
+                .doOnError((error) -> errorMessages.accept(error.getLocalizedMessage()))
+                .onErrorComplete()
+                .subscribe());
         addSubscription(weatherStatus.hide().map(weatherMapper::toWeatherViewModel).subscribe(view.getWeatherConsumer()));
         addSubscription(loadingStatus.subscribe(view.getLoadingStatusConsumer()));
         addSubscription(errorMessages.subscribe(view.getErrorConsumer()));
@@ -58,5 +65,6 @@ public class WeatherRxPresenter extends RxPresenter<WeatherView> {
 
     @Override
     protected void onDetach() {
+
     }
 }
